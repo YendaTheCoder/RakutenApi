@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1>Welocome to the Most Funny Meme Application</h1>
+    <h1>Welcome to the Most Funny Meme Application</h1>
     <div>{{ data.data }}</div>
     <meme :img="img" />
     <jokes :joke="joke" />
