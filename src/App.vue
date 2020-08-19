@@ -1,8 +1,10 @@
 <template>
   <div id="app">
+
     <h1>Welocome to the Most Funny Meme Application</h1>
     <meme id="meme" :img="img" />
     <jokes id="joke" :joke="joke" />
+
     <button @click="onClickLike">LIKE</button>
     <button @click="onClickDislike">DISLIKE</button>
   </div>
