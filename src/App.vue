@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png"/>
+    <img id="logo" src="./assets/logo.png"/>
 
     <evaluation />
     <ranking />
@@ -21,8 +21,12 @@ export default {
 </script>
 
 <style>
-body {
+html, body {
   background: #dfd5fe;
+  margin: 0;
+  padding: 0;
+  widows: 100vh;
+  height: 100vh;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -30,6 +34,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+#logo {
+  min-height: 5vh;
+  max-height: 10vh;
 }
 </style>
