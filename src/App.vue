@@ -1,9 +1,10 @@
 <template>
   <div id="app">
-    <h1>Welcome to the Most Funny Meme Application</h1>
-    <div>{{ data.data }}</div>
-    <meme :img="img" />
-    <jokes :joke="joke" />
+
+    <h1>Welocome to the Most Funny Meme Application</h1>
+    <meme id="meme" :img="img" />
+    <jokes id="joke" :joke="joke" />
+
     <button @click="onClickLike">LIKE</button>
     <button @click="onClickDislike">DISLIKE</button>
   </div>
@@ -70,28 +71,14 @@ export default {
       this.joke = joke.data.joke;
     },
     onClickLike: function () {
-      if (
-        this.img == "https://media.giphy.com/media/2tMYOWRjFHveuOB6jg/giphy.gif"
-      ) {
-        this.img = "https://media.giphy.com/media/Tdp2QlrGJVsz1TRY1h/giphy.gif";
-      } else {
-        this.img = "https://media.giphy.com/media/2tMYOWRjFHveuOB6jg/giphy.gif";
-      }
-
-      this.joke = this.joke + "!!";
+      this.getName();
+      this.getJoke();
 
       console.log("I like it!");
     },
     onClickDislike: function () {
-      if (
-        this.img == "https://media.giphy.com/media/2tMYOWRjFHveuOB6jg/giphy.gif"
-      ) {
-        this.img = "https://media.giphy.com/media/Tdp2QlrGJVsz1TRY1h/giphy.gif";
-      } else {
-        this.img = "https://media.giphy.com/media/2tMYOWRjFHveuOB6jg/giphy.gif";
-      }
-
-      this.joke = this.joke + "!!";
+      this.getName();
+      this.getJoke();
 
       console.log("I do not like it");
     },
@@ -107,5 +94,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+img {
+  min-height: 25vh;
+  max-height: 60vh;
 }
 </style>
