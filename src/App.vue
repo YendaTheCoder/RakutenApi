@@ -33,7 +33,7 @@ export default {
       img: loadingImg,
       joke: "Waiting for new Joke...",
       jokeId: "",
-      IsHere: true
+      IsHere: false
     };
   },
   beforeMount() {
