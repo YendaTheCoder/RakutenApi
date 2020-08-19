@@ -28,9 +28,17 @@ export default {
       jokes: [],
     };
   },
-  beforeMount() {
+  created() {
     this.retrieve();
   },
+  watch: {
+    "$route.path": function() {
+      this.retrieve();
+    },
+  },
+  // beforeMount() {
+  //   this.retrieve();
+  // },
   methods: {
     async retrieve() {
       if (this.likeOrDislike === "like") {
@@ -42,7 +50,7 @@ export default {
           .catch((e) => {
             console.log(e);
           });
-      } else {
+      } else if (this.likeOrDislike === "dislike") {
         await axios
           .get("/api/dislike")
           .then((response) => {
@@ -54,6 +62,9 @@ export default {
       }
     },
   },
+  // mounted() {
+  //   this.retrieve();
+  // },
 };
 </script>
 
