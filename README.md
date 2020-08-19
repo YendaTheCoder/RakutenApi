@@ -59,4 +59,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 ## Author
-@Bakisunsan @Dylanc55 @Ottotsuma @Ryohei03 @yuriamm
+[@Bakisunsan](https://github.com/bakisunsan) [@Dylanc55](https://github.com/Dylanc55) [@Ottotsuma](https://github.com/ottotsuma) [@Ryohei03](https://github.com/Ryohei03) [@yuriamm](https://github.com/yuriamm)
