@@ -13,11 +13,15 @@ export default {
 </script>
 
 <style scoped>
-    img {
-        width: 640px;
-        max-width: 100vh;
-    }
+img {
+    max-width: -webkit-fill-available;
+}
     .buffer {
         padding: 5px;
+    }
+    img {
+     min-height: 25vh;
+     max-height: 60vh;
+     max-width: -webkit-fill-available;
     }
 </style>

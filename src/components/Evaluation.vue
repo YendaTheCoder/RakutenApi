@@ -1,18 +1,17 @@
 <template>
-  <div id="app">
-    <img id="logo" src="./assets/logo.png"/>
-    <navigation />
-    <evaluation />
-    <ranking />
+  <div>
+    <meme id="meme" :img="img" />
+    <jokes id="joke" :joke="joke" />
+
+    <button @click="onClickLike">LIKE</button>
+    <button @click="onClickDislike">DISLIKE</button>
   </div>
 </template>
 
 <script>
-import Evaluation from "./components/Evaluation";
-import Ranking from "./components/Ranking";
-import Navigation from "./components/Nav";
+import Meme from "./Meme";
+import Jokes from "./Jokes";
 import axios from "axios";
-import { getDbJokes } from "./utils/index";
 require("dotenv").config();
 
 const loadingImg = "https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif";
@@ -22,17 +21,15 @@ const loadingJoke = "Waiting for new Joke...";
 const brokenJoke = "My humor is not working today.";
 
 export default {
-  name: "App",
+  name: "Evaluation",
   components: {
-    evaluation: Evaluation,
-    ranking: Ranking,
-    navigation: Navigation,
+    meme: Meme,
+    jokes: Jokes,
   },
   data: function () {
     return {
       img: loadingImg,
-      joke: "Waiting for new Joke...",
-      jokeId: ''
+      joke: "Waiting for new Joke..."
     };
   },
   beforeMount() {
@@ -77,64 +74,49 @@ export default {
         this.joke = brokenJoke;
       } else {
         this.joke = res.data.joke;
-        this.jokeId = res.data.id
       }
     },
-    onClickLike: async function () {
+    onClickLike: function () {
       this.img = loadingImg;
       this.joke = loadingJoke;
       this.getName();
       this.getJoke();
-      console.log("I like it!");
-      const jokes = await getDbJokes();
-      let check = jokes.filter(joke => joke.joke_ID === this.jokeId);
-      if (check.length === 0) {
-        console.log("post", check);
-      } else {
-        console.log("patch", check);
-      }
-      
-r
     },
-    onClickDislike: async function () {
+    onClickDislike: function () {
       this.img = loadingImg;
       this.joke = loadingJoke;
       this.getName();
       this.getJoke();
-
-      console.log("I do not like it");
-      const jokes = await getDbJokes();
-      let check = jokes.filter(joke => joke.joke_ID === this.jokeId);
-      if (check.length === 0) {
-        console.log("post", check);
-      } else {
-        console.log("patch", check);
-      }
     },
   },
 };
 </script>
 
 <style>
-html, body {
-  background: #DBE9EE; /*Alice Blue*/
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100vh;
+img {
+  min-height: 25vh;
+  max-height: 60vh;
 }
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+button {
+  background-color: #3f0591; /* Indigo */
+  border: none;
+  padding: 10px 20px;
+  color: white; 
+  margin: 3px;
+  box-shadow: -3px 3px #d82836, -2px 2px #d82836, -1px 1px #d82836;
+  border: 1px solid #d82836;
+   outline:none;
 }
-#logo {
-  min-height: 0vh;
-  max-height: 15vh;
+button:hover{
+cursor: hand; 
+cursor: pointer;
 }
-/* #080708 Rich Black FOGRA 39 */
-/* #C0D6DF Columbia Blue */
-/* #d82836;  Amaranth Red */
+button:active {
+  -webkit-box-shadow: 0px 1px 0px #d82836;
+  -moz-box-shadow: 0px 1px 0px #d82836;
+  box-shadow: 0px 1px 0px #d82836;
+  position: relative;
+  top: 6px;
+   outline:none;
+}
 </style>
