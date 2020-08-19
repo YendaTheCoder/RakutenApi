@@ -4,7 +4,6 @@
             <div>
                 <div>ranking: {{item.rank}}</div> 
                 <div>{{item.joke}}</div> 
-                <img :src="item.meme" />
                 <v-fa :icon="['fas', 'heart']" size="xs"/>
                 {{item.like}}
                 <v-fa :icon="['fas', 'heart-broken']" size="xs"/>
@@ -21,14 +20,12 @@ export default {
             ranking: [
                 {
                     rank: 1,
-                    meme: "https://media.giphy.com/media/EIiJp9cQ3GeEU/giphy.gif",
                     joke: "joke here1",
                     like: 100,
                     dislike: 1000
                 },
                 { 
                     rank: 2,
-                    meme: "https://media.giphy.com/media/EIiJp9cQ3GeEU/giphy.gif",
                     joke: "joke here2",
                     like: 1000,
                     dislike: 100
