@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <img id="logo" src="./assets/logo.png"/>
+    <navigation />
     <meme id="meme" :img="img" />
     <jokes id="joke" :joke="joke" />
 
@@ -12,6 +13,7 @@
 <script>
 import Meme from "./components/Meme";
 import Jokes from "./components/Jokes";
+import Navigation from "./components/Nav";
 import axios from "axios";
 require("dotenv").config();
 
@@ -24,6 +26,7 @@ const brokenJoke = "My humor is not working today.";
 export default {
   name: "App",
   components: {
+    navigation: Navigation,
     meme: Meme,
     jokes: Jokes,
   },
@@ -115,8 +118,8 @@ img {
   max-height: 60vh;
 }
 #logo {
-  min-height: 5vh;
-  max-height: 10vh;
+  min-height: 0vh;
+  max-height: 15vh;
 }
 button {
   background-color: #3c46fb;
