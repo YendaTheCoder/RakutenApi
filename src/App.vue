@@ -1,7 +1,6 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png"/>
-    <h1>Joker</h1>
+    <img id="logo" src="./assets/logo.png"/>
     <meme id="meme" :img="img" />
     <jokes id="joke" :joke="joke" />
 
@@ -97,8 +96,12 @@ export default {
 </script>
 
 <style>
-body {
+html, body {
   background: #dfd5fe;
+  margin: 0;
+  padding: 0;
+  widows: 100vh;
+  height: 100vh;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -106,11 +109,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 img {
   min-height: 25vh;
   max-height: 60vh;
+}
+#logo {
+  min-height: 5vh;
+  max-height: 10vh;
 }
 button {
   background-color: #3c46fb;
