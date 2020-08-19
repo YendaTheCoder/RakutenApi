@@ -1,8 +1,8 @@
 <template>
-  <div id="app">
+  <div id="app" ref="app">
     <img id="logo" src="./assets/logo.png" />
     <navigation />
-    <div class="clown">
+    <div class="clown" ref="clown">
     <img id="clown" @click="clownFunction" src="./assets/clownjoker.png" />
     <div class="speech-bubble">{{clown}}</div>
     </div>
@@ -128,11 +128,11 @@ export default {
       }
     },
     clownFunction () {
-      console.log('clown')
-          var theDiv = this.$refs.clown,
+      console.log(this.$refs.clown)
+        const theDiv = this.$refs.clown,
         theContainer = this.$refs.app,
-        maxLeft = theContainer.width() - theDiv.width(),
-        maxTop = theContainer.height() - theDiv.height(),
+        maxLeft = theContainer.offsetWidth - theDiv.offsetWidth,
+        maxTop = theContainer.offsetHeight - theDiv.offsetHeight,
         leftPos = Math.floor(Math.random() * maxLeft),
         topPos = Math.floor(Math.random() * maxTop);
 
