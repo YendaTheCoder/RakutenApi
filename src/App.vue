@@ -2,6 +2,7 @@
   <div id="app">
     <img id="logo" src="./assets/logo.png" />
     <navigation />
+    <img id="clown" src="./assets/clownjoker.png" />
     <evaluation v-if="IsHere"/>
     <ranking v-else/>
   </div>
@@ -181,6 +182,10 @@ button:active {
   position: relative;
   top: 6px;
   outline: none;
+}
+#clown {
+    display: flex;
+    position: absolute;
 }
 /* #080708 Rich Black FOGRA 39 */
 /* #C0D6DF Columbia Blue */
