@@ -1,5 +1,5 @@
 <template>
-    <div>- Meme Block - <br/>
+    <div>
         <img :src="img" alt="image not found">
     </div>
 </template>
