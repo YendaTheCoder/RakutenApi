@@ -12,7 +12,10 @@ This was created during our time as students at Code Chrysalis.
 1.  [Authors](#authors)
 
 ## Description
-This app allows users to like or dislike jokes made specifically for them! 
+This app allows users to like or dislike jokes made specifically for them!
+Users can also see the most liked and disliked jokes of all time!
+
+![ViewOfApp](./src/assets/joker.png?raw=true "Title") 
 
 ## Link
 [JOKER](https://cc13-rakutenapi-staging.herokuapp.com/)

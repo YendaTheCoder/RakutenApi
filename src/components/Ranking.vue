@@ -1,9 +1,9 @@
 <template>
-    <div>Ranking Block
+    <div class="ranking-div">Ranking Block
         <div v-for="item in ranking" v-bind:key="item">
             <div>
-                <div>ranking: {{item.rank}}</div> 
-                <div>{{item.joke}}</div> 
+                <div class="ranks-div">ranking: {{item.rank}}</div> 
+                <div class="">{{item.joke}}</div> 
                 <v-fa :icon="['fas', 'heart']" size="xs"/>
                 {{item.like}}
                 <v-fa :icon="['fas', 'heart-broken']" size="xs"/>
@@ -43,7 +43,5 @@ export default {
 </script>
 
 <style scoped>
-img {
-    width: 180px;
-}
+
 </style>
