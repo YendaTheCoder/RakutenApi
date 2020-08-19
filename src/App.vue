@@ -1,13 +1,12 @@
 <template>
   <div id="app">
     <img id="logo" src="./assets/logo.png" />
-    <div>
-      <router-link to="/like">Most Liked</router-link>
-      <router-link to="/home">Home</router-link>
-      <router-link to="/dislike">Most Disliked</router-link>
+    <div class="nav-wrapper">
+      <router-link class="link" to="/like">Most Liked</router-link>
+      <router-link class="link" to="/home">Home</router-link>
+      <router-link class="link" to="/dislike">Most Disliked</router-link>
     </div>
     <router-view />
-    <navigation />
   </div>
 </template>
 
@@ -36,6 +35,22 @@ body {
 #logo {
   min-height: 0vh;
   max-height: 15vh;
+}
+.nav-wrapper {
+  background-color: #3f0591; /* Indigo */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: calc(3px + 2vmin);
+  color: white;
+}
+.link { 
+    color:#d82836; /* Amaranth Red */
+}
+.link:hover{
+cursor: hand; 
+cursor: pointer;
 }
 /* #080708 Rich Black FOGRA 39 */
 /* #C0D6DF Columbia Blue */
