@@ -33,7 +33,8 @@ export default {
   data: function () {
     return {
       img: loadingImg,
-      joke: "Waiting for new Joke..."
+      joke: "Waiting for new Joke...",
+      jokeId: ''
     };
   },
   beforeMount() {
@@ -78,6 +79,7 @@ export default {
         this.joke = brokenJoke;
       } else {
         this.joke = res.data.joke;
+        this.jokeId = res.data.id
       }
     },
     onClickLike: function () {
@@ -103,7 +105,7 @@ html, body {
   background: #DBE9EE; /*Alice Blue*/
   margin: 0;
   padding: 0;
-  width: 100vh;
+  width: 100%;
   height: 100vh;
 }
 #app {
@@ -116,7 +118,7 @@ html, body {
 img {
   min-height: 25vh;
   max-height: 60vh;
-  max-width: 100vh;
+  max-width: 50vh;
 }
 #logo {
   min-height: 0vh;
