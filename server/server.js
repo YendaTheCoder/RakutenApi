@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/api', async (req, res) => {
     try {
-        const table = await db.select().table("table");
+        const table = await db.select().table("jokes").orderBy('joke_ID', 'asc');
         res.json(table);
     } catch (err) {
         console.error("Error loading table!", err);
@@ -22,28 +22,28 @@ app.get('/api', async (req, res) => {
     }    
 });
   
-app.patch('/api/:likeOrDislike', async (req, res) => {
-    const likeOrDislike = req.params.likeOrDislike;
-    if(likeOrDislike === "like") {
-        try {
-            const table = await db.select().table("table");
-            // console.log(table[0].like);
-            const result = await db.table("table").update({"like": table[0].like + 1});
-            res.json(result);
-        } catch (err) {
-            console.error("Error updating table!", err);
-            res.sendStatus(500);    
+app.patch('/api', async (req, res) => {
+    const likeOrDislike = req.body.likeOrDislike;
+    const joke_ID = req.body.joke_ID;
+    const joke = req.body.joke;
+
+    try {
+        let table = await db.select().table("jokes").where("joke_ID", joke_ID);
+        if (table.length === 0) {
+            await db.table("jokes").insert({"joke_ID": joke_ID, "joke": joke, "like": 0, "dislike": 0});
+            table = await db.select().table("jokes").where("joke_ID", joke_ID);
         }
-    } else if (likeOrDislike === "dislike") {
-        try {
-            const table = await db.select().table("table");
-            // console.log(table[0].dislike);
-            const result = await db.table("table").update({"dislike": table[0].dislike + 1});
+
+        if(likeOrDislike === "like") {
+            const result = await db.table("jokes").update({"like": table[0][likeOrDislike] + 1}).where("joke_ID", joke_ID);
             res.json(result);
-        } catch (err) {
-            console.error("Error updating table!", err);
-            res.sendStatus(500);
+        } else if (likeOrDislike === "dislike") {
+            const result = await db.table("jokes").update({"dislike": table[0][likeOrDislike] + 1}).where("joke_ID", joke_ID);
+            res.json(result);
         }
+    } catch (err) {
+        console.error("Error updating table!", err);
+        res.sendStatus(500);    
     }
 });
 

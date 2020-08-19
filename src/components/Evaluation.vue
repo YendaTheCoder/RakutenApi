@@ -1,16 +1,16 @@
 <template>
-  <div id="app">
-    <img id="logo" src="./assets/logo.png" />
-    <navigation />
-    <evaluation />
-    <ranking />
+  <div>
+    <meme id="meme" :img="img" />
+    <jokes id="joke" :joke="joke" />
+
+    <button @click="onClickLike">LIKE</button>
+    <button @click="onClickDislike">DISLIKE</button>
   </div>
 </template>
 
 <script>
-import Evaluation from "./components/Evaluation";
-import Ranking from "./components/Ranking";
-import Navigation from "./components/Nav";
+import Meme from "./Meme";
+import Jokes from "./Jokes";
 import axios from "axios";
 require("dotenv").config();
 
@@ -21,17 +21,15 @@ const loadingJoke = "Waiting for new Joke...";
 const brokenJoke = "My humor is not working today.";
 
 export default {
-  name: "App",
+  name: "Evaluation",
   components: {
-    evaluation: Evaluation,
-    ranking: Ranking,
-    navigation: Navigation,
+    meme: Meme,
+    jokes: Jokes,
   },
   data: function () {
     return {
       img: loadingImg,
-      joke: "Waiting for new Joke...",
-      jokeId: "",
+      joke: "Waiting for new Joke..."
     };
   },
   beforeMount() {
@@ -41,18 +39,18 @@ export default {
   methods: {
     async getName() {
       const res = await axios({
-        method: "GET",
-        url: "https://mlemapi.p.rapidapi.com/randommlem",
-        headers: {
-          "content-type": "application/octet-stream",
-          "x-rapidapi-host": "mlemapi.p.rapidapi.com",
+          "method":"GET",
+          "url":"https://mlemapi.p.rapidapi.com/randommlem",
+          "headers":{
+          "content-type":"application/octet-stream",
+          "x-rapidapi-host":"mlemapi.p.rapidapi.com",
           "x-rapidapi-key": process.env.VUE_APP_KEY,
-          useQueryString: true,
-        },
-      });
+          "useQueryString":true
+        }
+      })
 
-      if (!res.data || !res.data.url) {
-        this.img = brokenImg;
+      if(!res.data || !res.data.url) {
+        this.img = brokenImg
       } else {
         this.img = res.data.url;
       }
@@ -72,11 +70,10 @@ export default {
         },
       });
 
-      if (!res.data || !res.data.joke) {
+      if(!res.data || !res.data.joke) {
         this.joke = brokenJoke;
       } else {
         this.joke = res.data.joke;
-        this.jokeId = res.data.id;
       }
     },
     onClickLike: function () {
@@ -96,38 +93,23 @@ export default {
 </script>
 
 <style>
-html,
-body {
-  background: #dbe9ee; /*Alice Blue*/
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100vh;
-}
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#logo {
-  min-height: 0vh;
-  max-height: 15vh;
+img {
+  min-height: 25vh;
+  max-height: 60vh;
 }
 button {
   background-color: #3f0591; /* Indigo */
   border: none;
   padding: 10px 20px;
-  color: white;
+  color: white; 
   margin: 3px;
   box-shadow: -3px 3px #d82836, -2px 2px #d82836, -1px 1px #d82836;
   border: 1px solid #d82836;
-  outline: none;
+   outline:none;
 }
-button:hover {
-  cursor: hand;
-  cursor: pointer;
+button:hover{
+cursor: hand; 
+cursor: pointer;
 }
 button:active {
   -webkit-box-shadow: 0px 1px 0px #d82836;
@@ -135,9 +117,6 @@ button:active {
   box-shadow: 0px 1px 0px #d82836;
   position: relative;
   top: 6px;
-  outline: none;
+   outline:none;
 }
-/* #080708 Rich Black FOGRA 39 */
-/* #C0D6DF Columbia Blue */
-/* #d82836;  Amaranth Red */
 </style>
