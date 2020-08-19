@@ -3,8 +3,8 @@
     <img id="logo" src="./assets/logo.png" />
     <navigation />
     <div class="clown">
-    <img id="clown" src="./assets/clownjoker.png" />
-    <div class="speech-bubble">{{joke}}</div>
+    <img id="clown" @click="clownFunction" src="./assets/clownjoker.png" />
+    <div class="speech-bubble">{{clown}}</div>
     </div>
     <evaluation v-if="IsHere" />
     <ranking v-else />
@@ -39,11 +39,13 @@ export default {
       joke: "Waiting for new Joke...",
       jokeId: "",
       IsHere: true,
+      clown: '',
     };
   },
   beforeMount() {
     this.getName();
     this.getJoke();
+    this.getClown();
   },
   methods: {
     async getName() {
@@ -63,6 +65,16 @@ export default {
       } else {
         this.img = res.data.url;
       }
+    },
+    async getClown () {
+      const clown = await  axios({
+        method: "GET",
+        url: "https://api.adviceslip.com/advice"
+        // url: "https://api.whatdoestrumpthink.com/api/v1/quotes/random"
+      });
+      console.log(clown)
+      this.clown = clown.data.slip.advice
+      // this.clown = clown.data.message
     },
     async getJoke() {
       const res = await axios({
@@ -115,6 +127,26 @@ export default {
         console.log("patch", check);
       }
     },
+    clownFunction () {
+      console.log('clown')
+          var theDiv = this.$refs.clown,
+        theContainer = this.$refs.app,
+        maxLeft = theContainer.width() - theDiv.width(),
+        maxTop = theContainer.height() - theDiv.height(),
+        leftPos = Math.floor(Math.random() * maxLeft),
+        topPos = Math.floor(Math.random() * maxTop);
+
+    if (theDiv.position().left < leftPos) {
+        theDiv.removeClass("left").addClass("right");
+    } else {
+        theDiv.removeClass("right").addClass("left");
+    }
+
+    theDiv.animate({
+        "left": leftPos,
+        "top": topPos
+    }, 1200, this.clownFunction);
+}
   },
 };
 </script>
