@@ -161,6 +161,10 @@ button:active {
     display: flex;
     position: absolute;
 }
+@media screen and (min-width: 0px) and (max-width: 720px) {
+  #clown { display: none; }
+  .mobile-hide{ display: none; }
+}
 /* #080708 Rich Black FOGRA 39 */
 /* #C0D6DF Columbia Blue */
 /* #d82836;  Amaranth Red */
