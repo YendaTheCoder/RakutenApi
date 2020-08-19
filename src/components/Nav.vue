@@ -25,7 +25,6 @@ export default {
 
 <style scoped>
 .nav-wrapper {
-  /* background-color: #282c34; */
   background-color: #3f0591; /* Indigo */
   display: flex;
   flex-direction: row;
