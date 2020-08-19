@@ -3,15 +3,15 @@
     Ranking Block
     <div v-for="(item, index) in jokes" :key="index">
       <div>
-        <div class="ranks-div">ranking: {{index + 1}}</div>
-        <div class>{{item.joke}}</div>
+        <div class="ranks-div">ranking: {{ index + 1 }}</div>
+        <div class>{{ item.joke }}</div>
         <div v-if="likeOrDislike === 'like'">
           <v-fa :icon="['fas', 'heart']" size="xs" />
-          {{item.like}}
+          {{ item.like }}
         </div>
         <div v-if="likeOrDislike === 'dislike'">
           <v-fa :icon="['fas', 'heart-broken']" size="xs" />
-          {{item.dislike}}
+          {{ item.dislike }}
         </div>
       </div>
     </div>
@@ -29,33 +29,32 @@ export default {
     };
   },
   beforeMount() {
-    this.getLikes();
-    this.getDislikes();
+    this.retrieve();
   },
   methods: {
-    async getLikes() {
-      await axios
-        .get("/api/like")
-        .then((response) => {
-          this.jokes = response.data;
-        })
-        .catch((e) => {
-          console.log(e);
-        });
-    },
-    async getDislikes() {
-      await axios
-        .get("/api/dislike")
-        .then((response) => {
-          this.jokes = response.data;
-        })
-        .catch((e) => {
-          console.log(e);
-        });
+    async retrieve() {
+      if (this.likeOrDislike === "like") {
+        await axios
+          .get("/api/like")
+          .then((response) => {
+            this.jokes = response.data;
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+      } else {
+        await axios
+          .get("/api/dislike")
+          .then((response) => {
+            this.jokes = response.data;
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+      }
     },
   },
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
