@@ -24,17 +24,24 @@ app.get('/api', async (req, res) => {
     }    
 });
 
-// POST add joke
-app.post("/api/addJoke/:joke", async (req, res) => {
-    try {
-      await db("jokes").insert(req.body)
-      // console.log("Added Recipe", req.body);
-    } catch (err) {
-      console.error("Error adding joke!", err);
-      res.sendStatus(500);
+app.get('/api/like', async (req, res) =>{ 
+    try{
+        const likes = await db.select().table("jokes").orderBy("like", "desc");
+        res.json(likes);
+    } catch(err) {console.error("Error loading likes!", err);
+        res.sendStatus(500);
     }
-})
+});
 
+app.get('/api/dislike', async (req, res) => {
+    try{
+        const dislikes = await db.select().table("jokes").orderBy("dislike", "desc");
+        res.json(dislikes);
+    } catch(err) {console.error("Error loading dislikes!", err);
+        res.sendStatus(500);
+    }
+});
+  
 app.patch('/api', async (req, res) => {
     const likeOrDislike = req.body.likeOrDislike;
     const joke_ID = req.body.joke_ID;

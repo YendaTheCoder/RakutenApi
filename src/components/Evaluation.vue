@@ -12,6 +12,7 @@
 import Meme from "./Meme";
 import Jokes from "./Jokes";
 import axios from "axios";
+import { patchDbJokes } from "../utils/index";
 require("dotenv").config();
 
 const loadingImg = "https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif";
@@ -74,15 +75,18 @@ export default {
         this.joke = brokenJoke;
       } else {
         this.joke = res.data.joke;
+        this.jokeId = res.data.id;
       }
     },
     onClickLike: function () {
+      patchDbJokes(this.joke, this.jokeId, "like");
       this.img = loadingImg;
       this.joke = loadingJoke;
       this.getName();
       this.getJoke();
     },
     onClickDislike: function () {
+      patchDbJokes(this.joke, this.jokeId, "dislike");
       this.img = loadingImg;
       this.joke = loadingJoke;
       this.getName();
@@ -105,7 +109,7 @@ button {
   margin: 3px;
   box-shadow: -3px 3px #d82836, -2px 2px #d82836, -1px 1px #d82836;
   border: 1px solid #d82836;
-   outline:none;
+  outline:none;
 }
 button:hover{
 cursor: hand; 
@@ -117,6 +121,6 @@ button:active {
   box-shadow: 0px 1px 0px #d82836;
   position: relative;
   top: 6px;
-   outline:none;
+  outline:none;
 }
 </style>
