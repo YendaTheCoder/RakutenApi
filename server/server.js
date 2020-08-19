@@ -12,9 +12,9 @@ app.use(express.static(path.resolve(__dirname, "..", "dist")));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// GET retrieve jokes
 app.get('/api', async (req, res) => {
     try {
-
         const jokes = await db.select().table("jokes");
         res.json(jokes);
 
@@ -23,7 +23,18 @@ app.get('/api', async (req, res) => {
         res.sendStatus(500);
     }    
 });
-  
+
+// POST add joke
+app.post("/api/addJoke/:joke", async (req, res) => {
+    try {
+      await db("jokes").insert(req.body)
+      // console.log("Added Recipe", req.body);
+    } catch (err) {
+      console.error("Error adding joke!", err);
+      res.sendStatus(500);
+    }
+})
+
 app.patch('/api', async (req, res) => {
     const likeOrDislike = req.body.likeOrDislike;
     const joke_ID = req.body.joke_ID;

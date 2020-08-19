@@ -93,8 +93,6 @@ export default {
       } else {
         console.log("patch", check);
       }
-      
-r
     },
     onClickDislike: async function () {
       this.img = loadingImg;
