@@ -89,7 +89,20 @@ export default {
       const jokes = await getDbJokes();
       let check = jokes.filter(joke => joke.joke_ID === this.jokeId);
       if (check.length === 0) {
-        console.log("post", check);
+        const storeJoke = () => {
+          const joke = {
+          joke_id: this.jokeId,
+          joke: this.joke,
+          like: 1,
+          dislike: 0,
+          }
+          fetch('/api/addJoke/:joke', {
+          method: 'post',
+          body: JSON.stringify(joke),
+          headers: { 'Content-type': 'application/json' }
+          })
+        }
+        storeJoke();
       } else {
         console.log("patch", check);
       }
@@ -104,7 +117,20 @@ export default {
       const jokes = await getDbJokes();
       let check = jokes.filter(joke => joke.joke_ID === this.jokeId);
       if (check.length === 0) {
-        console.log("post", check);
+        const storeJoke = () => {
+          const joke = {
+          joke_id: this.jokeId,
+          joke: this.joke,
+          like: 0,
+          dislike: 1,
+          }
+          fetch('/api/addJoke/:joke', {
+          method: 'post',
+          body: JSON.stringify(joke),
+          headers: { 'Content-type': 'application/json' }
+          })
+        }
+        storeJoke();
       } else {
         console.log("patch", check);
       }
