@@ -3,16 +3,19 @@
     <img src="./assets/logo.png"/>
 
     <evaluation />
+    <ranking />
   </div>
 </template>
 
 <script>
 import Evaluation from "./components/Evaluation";
+import Ranking from "./components/Ranking";
 
 export default {
   name: "App",
   components: {
-    evaluation: Evaluation 
+    evaluation: Evaluation,
+    ranking: Ranking
   }
 };
 </script>
