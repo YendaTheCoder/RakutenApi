@@ -1,8 +1,9 @@
 <template>
   <div id="app">
     <img id="logo" src="./assets/logo.png" />
-    <img id="clown" src="./assets/clownjoker.png" />
+    
     <navigation />
+    <img id="clown" src="./assets/clownjoker.png" />
     <evaluation v-if="IsHere"/>
     <ranking v-else/>
   </div>
@@ -158,10 +159,10 @@ button:active {
   outline: none;
 }
 #clown {
-    /* display: flex; */
+    display: flex;
     position: absolute;
-    min-height: 0vh;
-  max-height: 15vh;
+    /* min-height: 0vh;
+  max-height: 15vh; */
 }
 @media screen and (min-width: 0px) and (max-width: 720px) {
   #clown { display: none; }
