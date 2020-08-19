@@ -13,6 +13,9 @@ export default {
 </script>
 
 <style scoped>
+img {
+    max-width: -webkit-fill-available;
+}
     .buffer {
         padding: 5px;
     }
