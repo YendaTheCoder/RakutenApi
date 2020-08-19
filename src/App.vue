@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <img id="logo" src="./assets/logo.png" />
+    <img id="clown" src="./assets/clownjoker.png" />
     <div class="nav-wrapper">
       <router-link class="link" to="/like">Most Liked</router-link>
       <router-link class="link" to="/home">Home</router-link>
@@ -51,6 +52,16 @@ body {
 .link:hover{
 cursor: hand; 
 cursor: pointer;
+}
+#clown {
+    /* display: flex; */
+    position: absolute;
+    min-height: 0vh;
+  max-height: 15vh;
+}
+@media screen and (min-width: 0px) and (max-width: 720px) {
+  #clown { display: none; }
+  .mobile-hide{ display: none; }
 }
 /* #080708 Rich Black FOGRA 39 */
 /* #C0D6DF Columbia Blue */
