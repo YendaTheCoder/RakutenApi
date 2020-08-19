@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-
-    <h1>Welocome to the Most Funny Meme Application</h1>
+    <img src="./assets/logo.png"/>
+    <h1>Joker</h1>
     <meme id="meme" :img="img" />
     <jokes id="joke" :joke="joke" />
 
@@ -101,5 +101,12 @@ body {
 img {
   min-height: 25vh;
   max-height: 60vh;
+}
+button {
+  background-color: #3c46fb;
+  border: none;
+  padding: 10px 20px;
+  color: white; 
+  margin: 3px;
 }
 </style>
