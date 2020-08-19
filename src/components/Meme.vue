@@ -15,6 +15,7 @@ export default {
 <style scoped>
     img {
         width: 640px;
+        max-width: 100vh;
     }
     .buffer {
         padding: 5px;

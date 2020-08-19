@@ -103,7 +103,7 @@ html, body {
   background: #DBE9EE; /*Alice Blue*/
   margin: 0;
   padding: 0;
-  widows: 100vh;
+  width: 100vh;
   height: 100vh;
 }
 #app {
@@ -116,6 +116,7 @@ html, body {
 img {
   min-height: 25vh;
   max-height: 60vh;
+  max-width: 100vh;
 }
 #logo {
   min-height: 0vh;
