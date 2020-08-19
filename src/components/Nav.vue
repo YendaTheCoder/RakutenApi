@@ -37,6 +37,11 @@ export default {
 }
 .link { 
     color:#d82836; /* Amaranth Red */
+    font-size: 4vh;
+     font-weight: bold;
+    -webkit-text-stroke: 0.5px white;
+    font-family: URW Chancery L, cursive;
+    /* text-shadow: white 1px 0 10px; */
 }
 .link:hover{
 cursor: hand; 

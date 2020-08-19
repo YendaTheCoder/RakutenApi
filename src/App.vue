@@ -1,11 +1,14 @@
 <template>
   <div id="app">
     <img id="logo" src="./assets/logo.png" />
-    
     <navigation />
+    <div class="clown">
     <img id="clown" src="./assets/clownjoker.png" />
-    <evaluation v-if="IsHere"/>
-    <ranking v-else/>
+    <div class="speech-bubble">this is a joke</div>
+    </div>
+    <evaluation v-if="IsHere" />
+    <ranking v-else />
+
   </div>
 </template>
 
@@ -30,12 +33,12 @@ export default {
     ranking: Ranking,
     navigation: Navigation,
   },
-  data: function () {
+  data: function() {
     return {
       img: loadingImg,
       joke: "Waiting for new Joke...",
       jokeId: "",
-      IsHere: true
+      IsHere: true,
     };
   },
   beforeMount() {
@@ -83,21 +86,21 @@ export default {
         this.jokeId = res.data.id;
       }
     },
-    onClickLike: async function () {
+    onClickLike: async function() {
       this.img = loadingImg;
       this.joke = loadingJoke;
       this.getName();
       this.getJoke();
       console.log("I like it!");
       const jokes = await getDbJokes();
-      let check = jokes.filter(joke => joke.joke_ID === this.jokeId);
+      let check = jokes.filter((joke) => joke.joke_ID === this.jokeId);
       if (check.length === 0) {
         console.log("post", check);
       } else {
         console.log("patch", check);
       }
     },
-    onClickDislike: async function () {
+    onClickDislike: async function() {
       this.img = loadingImg;
       this.joke = loadingJoke;
       this.getName();
@@ -105,7 +108,7 @@ export default {
 
       console.log("I do not like it");
       const jokes = await getDbJokes();
-      let check = jokes.filter(joke => joke.joke_ID === this.jokeId);
+      let check = jokes.filter((joke) => joke.joke_ID === this.jokeId);
       if (check.length === 0) {
         console.log("post", check);
       } else {
@@ -159,14 +162,49 @@ button:active {
   outline: none;
 }
 #clown {
-    display: flex;
-    position: absolute;
-    /* min-height: 0vh;
+  display: flex;
+  position: absolute;
+  /* min-height: 0vh;
+  max-height: 15vh; */
+}
+.clown {
+  display: flex;
+  position: absolute;
+  /* min-height: 0vh;
   max-height: 15vh; */
 }
 @media screen and (min-width: 0px) and (max-width: 720px) {
-  #clown { display: none; }
-  .mobile-hide{ display: none; }
+  #clown {
+    display: none;
+  }
+  .speech-bubble {
+    display: none;
+  }
+  .mobile-hide {
+    display: none;
+  }
+}
+.speech-bubble {
+  position: relative;
+  background: #00aabb;
+  border-radius: 0.4em;
+  /* display: flex; */
+  width: 10vh;
+  margin-left: 22vh;
+}
+.speech-bubble:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border: 20px solid transparent;
+  border-top-color: #00aabb;
+  border-bottom: 0;
+  border-left: 0;
+  margin-left: -20px;
+  margin-bottom: -20px;
 }
 /* #080708 Rich Black FOGRA 39 */
 /* #C0D6DF Columbia Blue */
