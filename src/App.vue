@@ -4,7 +4,7 @@
     <navigation />
     <div class="clown">
     <img id="clown" src="./assets/clownjoker.png" />
-    <div class="speech-bubble">this is a joke</div>
+    <div class="speech-bubble">{{joke}}</div>
     </div>
     <evaluation v-if="IsHere" />
     <ranking v-else />
@@ -142,12 +142,13 @@ body {
 button {
   background-color: #3f0591; /* Indigo */
   border: none;
-  padding: 10px 20px;
+  padding: 8px 18px;
   color: white;
   margin: 3px;
   box-shadow: -3px 3px #d82836, -2px 2px #d82836, -1px 1px #d82836;
   border: 1px solid #d82836;
   outline: none;
+  font-family: URW Chancery L, cursive;
 }
 button:hover {
   cursor: hand;
@@ -172,6 +173,7 @@ button:active {
   position: absolute;
   /* min-height: 0vh;
   max-height: 15vh; */
+  margin-top: 1vh; 
 }
 @media screen and (min-width: 0px) and (max-width: 720px) {
   #clown {
@@ -189,14 +191,15 @@ button:active {
   background: #00aabb;
   border-radius: 0.4em;
   /* display: flex; */
-  width: 10vh;
+  min-width: 10vh;
   margin-left: 22vh;
+  max-width: 60vh;
 }
 .speech-bubble:after {
   content: "";
   position: absolute;
   bottom: 0;
-  left: 50%;
+  left: 6vh;
   width: 0;
   height: 0;
   border: 20px solid transparent;
