@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <img id="logo" src="./assets/logo.png"/>
+    <img id="logo" src="./assets/logo.png" />
     <navigation />
-    <evaluation />
-    <ranking />
+    <evaluation v-if="IsHere"/>
+    <ranking v-else/>
   </div>
 </template>
 
@@ -32,7 +32,8 @@ export default {
     return {
       img: loadingImg,
       joke: "Waiting for new Joke...",
-      jokeId: ''
+      jokeId: "",
+      IsHere: true
     };
   },
   beforeMount() {
@@ -42,18 +43,18 @@ export default {
   methods: {
     async getName() {
       const res = await axios({
-          "method":"GET",
-          "url":"https://mlemapi.p.rapidapi.com/randommlem",
-          "headers":{
-          "content-type":"application/octet-stream",
-          "x-rapidapi-host":"mlemapi.p.rapidapi.com",
+        method: "GET",
+        url: "https://mlemapi.p.rapidapi.com/randommlem",
+        headers: {
+          "content-type": "application/octet-stream",
+          "x-rapidapi-host": "mlemapi.p.rapidapi.com",
           "x-rapidapi-key": process.env.VUE_APP_KEY,
-          "useQueryString":true
-        }
-      })
+          useQueryString: true,
+        },
+      });
 
-      if(!res.data || !res.data.url) {
-        this.img = brokenImg
+      if (!res.data || !res.data.url) {
+        this.img = brokenImg;
       } else {
         this.img = res.data.url;
       }
@@ -73,11 +74,11 @@ export default {
         },
       });
 
-      if(!res.data || !res.data.joke) {
+      if (!res.data || !res.data.joke) {
         this.joke = brokenJoke;
       } else {
         this.joke = res.data.joke;
-        this.jokeId = res.data.id
+        this.jokeId = res.data.id;
       }
     },
     onClickLike: async function () {
@@ -140,8 +141,9 @@ export default {
 </script>
 
 <style>
-html, body {
-  background: #DBE9EE; /*Alice Blue*/
+html,
+body {
+  background: #dbe9ee; /*Alice Blue*/
   margin: 0;
   padding: 0;
   width: 100%;
@@ -157,6 +159,28 @@ html, body {
 #logo {
   min-height: 0vh;
   max-height: 15vh;
+}
+button {
+  background-color: #3f0591; /* Indigo */
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  margin: 3px;
+  box-shadow: -3px 3px #d82836, -2px 2px #d82836, -1px 1px #d82836;
+  border: 1px solid #d82836;
+  outline: none;
+}
+button:hover {
+  cursor: hand;
+  cursor: pointer;
+}
+button:active {
+  -webkit-box-shadow: 0px 1px 0px #d82836;
+  -moz-box-shadow: 0px 1px 0px #d82836;
+  box-shadow: 0px 1px 0px #d82836;
+  position: relative;
+  top: 6px;
+  outline: none;
 }
 /* #080708 Rich Black FOGRA 39 */
 /* #C0D6DF Columbia Blue */
