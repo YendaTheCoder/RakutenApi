@@ -2,8 +2,8 @@
   <div id="app">
     <img id="logo" src="./assets/logo.png" />
     <navigation />
-    <evaluation />
-    <ranking />
+    <evaluation v-if="IsHere"/>
+    <ranking v-else/>
   </div>
 </template>
 
@@ -33,6 +33,7 @@ export default {
       img: loadingImg,
       joke: "Waiting for new Joke...",
       jokeId: "",
+      IsHere: true
     };
   },
   beforeMount() {
@@ -93,8 +94,6 @@ export default {
       } else {
         console.log("patch", check);
       }
-      
-r
     },
     onClickDislike: async function () {
       this.img = loadingImg;
