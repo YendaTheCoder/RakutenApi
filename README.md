@@ -6,8 +6,8 @@ This was created during my time as a student at Code Chrysalis.
 ## Table of Contents
 
 1.  [Description](#description)
-1.  [Environment](#environment)
 1.  [Usage](#usage)
+1.  [Environment](#environment)
 1.  [Contributing](#contributing)
 1.  [Author](#author)
 
