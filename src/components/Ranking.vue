@@ -1,52 +1,61 @@
 <template>
-    <div class="ranking-div">Ranking Block
-        <div v-for="item in ranking" v-bind:key="item">
-            <div>
-                <div class="ranks-div">ranking: {{item.rank}}</div> 
-                <div class="">{{item.joke}}</div>
-                <div v-if="likeOrDislike === 'like'">
-                    <v-fa :icon="['fas', 'heart']" size="xs"/>
-                    {{item.like}}
-                </div>
-                <div v-if="likeOrDislike === 'dislike'">
-                <v-fa :icon="['fas', 'heart-broken']" size="xs"/>
-                    {{item.dislike}}
-                </div>
-            </div>
+  <div class="ranking-div">
+    Ranking Block
+    <div v-for="(item, index) in jokes" :key="index">
+      <div>
+        <div class="ranks-div">ranking: {{index + 1}}</div>
+        <div class>{{item.joke}}</div>
+        <div v-if="likeOrDislike === 'like'">
+          <v-fa :icon="['fas', 'heart']" size="xs" />
+          {{item.like}}
         </div>
+        <div v-if="likeOrDislike === 'dislike'">
+          <v-fa :icon="['fas', 'heart-broken']" size="xs" />
+          {{item.dislike}}
+        </div>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
-export default {
-    props: ["likeOrDislike"],
-    data: function() {
-        return {
-            ranking: [
-                {
-                    rank: 1,
-                    joke: "joke here1",
-                    like: 100,
-                    dislike: 1000
-                },
-                { 
-                    rank: 2,
-                    joke: "joke here2",
-                    like: 1000,
-                    dislike: 100
-                },
-            ]
-        }
-    },
-    beforeMount() {
-        console.log("ranking api will be called here");
-    },
-    methods: {
+import axios from "axios";
 
-    }
-}
+export default {
+  props: ["likeOrDislike"],
+  data() {
+    return {
+      jokes: [],
+    };
+  },
+  beforeMount() {
+    this.getLikes();
+    this.getDislikes();
+  },
+  methods: {
+    async getLikes() {
+      await axios
+        .get("/api/like")
+        .then((response) => {
+          this.jokes = response.data;
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    },
+    async getDislikes() {
+      await axios
+        .get("/api/dislike")
+        .then((response) => {
+          this.jokes = response.data;
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    },
+  },
+};
 </script>
 
 <style scoped>
-
 </style>
