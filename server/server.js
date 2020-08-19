@@ -22,20 +22,23 @@ app.get('/api', async (req, res) => {
     }    
 });
   
-app.patch('/api/:likeOrDislike', async (req, res) => {
-    const likeOrDislike = req.params.likeOrDislike;
+app.patch('/api', async (req, res) => {
+    const likeOrDislike = req.body.likeOrDislike;
+    const joke_ID = req.body.joke_ID;
+    const joke = req.body.joke;
+
     try {
-        let table = await db.select().table("jokes").where("joke_ID", req.query.id);
+        let table = await db.select().table("jokes").where("joke_ID", joke_ID);
         if (table.length === 0) {
-            await db.table("jokes").insert({"joke_ID": req.query.id, "joke": req.query.joke, "like": 0, "dislike": 0});
-            table = await db.select().table("jokes").where("joke_ID", req.query.id);
+            await db.table("jokes").insert({"joke_ID": joke_ID, "joke": joke, "like": 0, "dislike": 0});
+            table = await db.select().table("jokes").where("joke_ID", joke_ID);
         }
 
         if(likeOrDislike === "like") {
-            const result = await db.table("jokes").update({"like": table[0][likeOrDislike] + 1}).where("joke_ID", req.query.id);
+            const result = await db.table("jokes").update({"like": table[0][likeOrDislike] + 1}).where("joke_ID", joke_ID);
             res.json(result);
         } else if (likeOrDislike === "dislike") {
-            const result = await db.table("jokes").update({"dislike": table[0][likeOrDislike] + 1}).where("joke_ID", req.query.id);
+            const result = await db.table("jokes").update({"dislike": table[0][likeOrDislike] + 1}).where("joke_ID", joke_ID);
             res.json(result);
         }
     } catch (err) {
