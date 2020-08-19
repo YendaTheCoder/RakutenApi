@@ -15,6 +15,7 @@ import Meme from "./components/Meme";
 import Jokes from "./components/Jokes";
 import Navigation from "./components/Nav";
 import axios from "axios";
+import { getDbJokes } from "./utils/index";
 require("dotenv").config();
 
 const loadingImg = "https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif";
@@ -82,19 +83,34 @@ export default {
         this.jokeId = res.data.id
       }
     },
-    onClickLike: function () {
+    onClickLike: async function () {
       this.img = loadingImg;
       this.joke = loadingJoke;
       this.getName();
       this.getJoke();
       console.log("I like it!");
+      const jokes = await getDbJokes();
+      let check = jokes.filter(joke => joke.joke_ID === this.jokeId);
+      if (check.length === 0) {
+        console.log("post", check);
+      } else {
+        console.log("patch", check);
+      }
+      
     },
-    onClickDislike: function () {
+    onClickDislike: async function () {
       this.img = loadingImg;
       this.joke = loadingJoke;
       this.getName();
       this.getJoke();
       console.log("I do not like it");
+      const jokes = await getDbJokes();
+      let check = jokes.filter(joke => joke.joke_ID === this.jokeId);
+      if (check.length === 0) {
+        console.log("post", check);
+      } else {
+        console.log("patch", check);
+      }
     },
   },
 };

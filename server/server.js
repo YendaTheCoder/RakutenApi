@@ -14,10 +14,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/api', async (req, res) => {
     try {
-        const table = await db.select().table("table");
-        res.json(table);
+        const jokes = await db.select().table("jokes");
+        res.json(jokes);
     } catch (err) {
-        console.error("Error loading table!", err);
+        console.error("Error loading jokes!", err);
         res.sendStatus(500);
     }    
 });
