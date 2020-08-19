@@ -12,6 +12,7 @@
 import Meme from "./Meme";
 import Jokes from "./Jokes";
 import axios from "axios";
+import { patchDbJokes } from "../utils/index";
 require("dotenv").config();
 
 const loadingImg = "https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif";
@@ -74,15 +75,18 @@ export default {
         this.joke = brokenJoke;
       } else {
         this.joke = res.data.joke;
+        this.jokeId = res.data.id;
       }
     },
     onClickLike: function () {
+      patchDbJokes(this.joke, this.jokeId, "like");
       this.img = loadingImg;
       this.joke = loadingJoke;
       this.getName();
       this.getJoke();
     },
     onClickDislike: function () {
+      patchDbJokes(this.joke, this.jokeId, "dislike");
       this.img = loadingImg;
       this.joke = loadingJoke;
       this.getName();
