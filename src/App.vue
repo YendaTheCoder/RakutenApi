@@ -114,7 +114,6 @@ html, body {
   min-height: 0vh;
   max-height: 15vh;
 }
-
 /* #080708 Rich Black FOGRA 39 */
 /* #C0D6DF Columbia Blue */
 /* #d82836;  Amaranth Red */
