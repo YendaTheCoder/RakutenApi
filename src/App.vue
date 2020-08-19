@@ -13,6 +13,7 @@
 import Meme from "./components/Meme";
 import Jokes from "./components/Jokes";
 import axios from "axios";
+require("dotenv").config();
 
 export default {
   name: "App",
@@ -25,7 +26,6 @@ export default {
       img: "",
       joke: "Joke will appear here",
       data: {},
-      // joke: {},
     };
   },
   created: function () {
@@ -39,36 +39,18 @@ export default {
   methods: {
     async getName() {
       const nut = await axios({
-        method: "GET",
-        url:
-          "https://dawn2k-random-german-profiles-and-names-generator-v1.p.rapidapi.com/",
-        headers: {
-          "x-rapidapi-host":
-            "dawn2k-random-german-profiles-and-names-generator-v1.p.rapidapi.com",
-          "x-rapidapi-key": process.env.KEY,
-          useQueryString: true,
-        },
-        params: {
-          count: "1",
-          gender: "b",
-          maxage: "90",
-          minage: "20",
-          cc: "all",
-          email: "gmail.com%2Cyahoo.com",
-          pwlen: "12",
-          ip: "a",
-          phone: "l%2Ct%2Co",
-          uuid: "false",
-          lic: "false",
-          color: "false",
-          seed: "helloworld",
-          images: "false",
-          format: "json",
-        },
-      });
+    "method":"GET",
+    "url":"https://mlemapi.p.rapidapi.com/randommlem",
+    "headers":{
+    "content-type":"application/octet-stream",
+    "x-rapidapi-host":"mlemapi.p.rapidapi.com",
+    "x-rapidapi-key": process.env.VUE_APP_KEY,
+    "useQueryString":true
+    }
+    })
       console.log(nut);
-      this.data = nut;
-      this.img = nut.data[0];
+      this.data = nut.data.url;
+      this.img = nut.data.url;
     },
     async getJoke() {
       const joke = await axios({
@@ -76,7 +58,7 @@ export default {
         url: "https://jokeapi-v2.p.rapidapi.com/joke/Any",
         headers: {
           "x-rapidapi-host": "jokeapi-v2.p.rapidapi.com",
-          "x-rapidapi-key": process.env.KEY,
+          "x-rapidapi-key": process.env.VUE_APP_KEY,
           useQueryString: true,
         },
         params: {
@@ -85,7 +67,7 @@ export default {
         },
       });
       console.log(joke);
-      this.joke = joke;
+      this.joke = joke.data.joke;
     },
     onClickLike: function () {
       if (
