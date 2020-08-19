@@ -13,8 +13,17 @@ This was created during my time as a student at Code Chrysalis.
 
 ## Description
 
+## Usage
+
+- node.js
+
+## Environment
+
+- Node.js
 
 ## Project setup
+
+### Install dependencies
 ```
 yarn install
 ```
@@ -36,3 +45,18 @@ yarn lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+## Built With
+
+- [vueJS](http://www.https://vuejs.org/) - The Javascript library used
+- [Yarn](https://yarnpkg.com/) - Package Management
+- [Knex](https://knexjs.org/) - Query building
+- [Postgres](https://www.postgresql.org/) - Database Management
+- [express](https://expressjs.com/) - 
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## Author
+@Bakisunsan @Dylanc55 @Ottotsuma @Ryohei03 @yuriamm
