@@ -3,11 +3,15 @@
         <div v-for="item in ranking" v-bind:key="item">
             <div>
                 <div class="ranks-div">ranking: {{item.rank}}</div> 
-                <div class="">{{item.joke}}</div> 
-                <v-fa :icon="['fas', 'heart']" size="xs"/>
-                {{item.like}}
+                <div class="">{{item.joke}}</div>
+                <div v-if="likeOrDislike === 'like'">
+                    <v-fa :icon="['fas', 'heart']" size="xs"/>
+                    {{item.like}}
+                </div>
+                <div v-if="likeOrDislike === 'dislike'">
                 <v-fa :icon="['fas', 'heart-broken']" size="xs"/>
-                {{item.dislike}}
+                    {{item.dislike}}
+                </div>
             </div>
         </div>
     </div>
@@ -15,6 +19,7 @@
 
 <script>
 export default {
+    props: ["likeOrDislike"],
     data: function() {
         return {
             ranking: [
