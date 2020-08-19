@@ -16,6 +16,12 @@ import Jokes from "./components/Jokes";
 import axios from "axios";
 require("dotenv").config();
 
+const loadingImg = "https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif";
+const brokenImg = "https://media.giphy.com/media/iF3M9gPPCdulq/giphy.gif";
+
+const loadingJoke = "Waiting for new Joke...";
+const brokenJoke = "My humor is not working today.";
+
 export default {
   name: "App",
   components: {
@@ -24,14 +30,9 @@ export default {
   },
   data: function () {
     return {
-      img: "",
-      joke: "Joke will appear here",
-      data: {},
+      img: loadingImg,
+      joke: "Waiting for new Joke..."
     };
-  },
-  created: function () {
-    console.log("App created! get image here");
-    console.log("App created! get joke here");
   },
   beforeMount() {
     this.getName();
@@ -39,22 +40,25 @@ export default {
   },
   methods: {
     async getName() {
-      const nut = await axios({
-    "method":"GET",
-    "url":"https://mlemapi.p.rapidapi.com/randommlem",
-    "headers":{
-    "content-type":"application/octet-stream",
-    "x-rapidapi-host":"mlemapi.p.rapidapi.com",
-    "x-rapidapi-key": process.env.VUE_APP_KEY,
-    "useQueryString":true
-    }
-    })
-      console.log(nut);
-      this.data = nut.data.url;
-      this.img = nut.data.url;
+      const res = await axios({
+          "method":"GET",
+          "url":"https://mlemapi.p.rapidapi.com/randommlem",
+          "headers":{
+          "content-type":"application/octet-stream",
+          "x-rapidapi-host":"mlemapi.p.rapidapi.com",
+          "x-rapidapi-key": process.env.VUE_APP_KEY,
+          "useQueryString":true
+        }
+      })
+
+      if(!res.data || !res.data.url) {
+        this.img = brokenImg
+      } else {
+        this.img = res.data.url;
+      }
     },
     async getJoke() {
-      const joke = await axios({
+      const res = await axios({
         method: "GET",
         url: "https://jokeapi-v2.p.rapidapi.com/joke/Any",
         headers: {
@@ -67,19 +71,25 @@ export default {
           type: "single",
         },
       });
-      console.log(joke);
-      this.joke = joke.data.joke;
+
+      if(!res.data || !res.data.joke) {
+        this.joke = brokenJoke;
+      } else {
+        this.joke = res.data.joke;
+      }
     },
     onClickLike: function () {
+      this.img = loadingImg;
+      this.joke = loadingJoke;
       this.getName();
       this.getJoke();
-
       console.log("I like it!");
     },
     onClickDislike: function () {
+      this.img = loadingImg;
+      this.joke = loadingJoke;
       this.getName();
       this.getJoke();
-
       console.log("I do not like it");
     },
   },
