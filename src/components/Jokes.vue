@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div>{{joke}}</div>
+        <div>{{joke}}</div> <br/>
     </div>
 </template>
 

@@ -98,10 +98,23 @@ img {
   max-height: 60vh;
 }
 button {
-  background-color: #3c46fb;
+  background-color: #3f0591; /* Indigo */
   border: none;
   padding: 10px 20px;
   color: white; 
   margin: 3px;
+  box-shadow: -3px 3px #d82836, -2px 2px #d82836, -1px 1px #d82836;
+  border: 1px solid #d82836;
+}
+button:hover{
+cursor: hand; 
+cursor: pointer;
+}
+button:active {
+  -webkit-box-shadow: 0px 1px 0px #d82836;
+  -moz-box-shadow: 0px 1px 0px #d82836;
+  box-shadow: 0px 1px 0px #d82836;
+  position: relative;
+  top: 6px;
 }
 </style>

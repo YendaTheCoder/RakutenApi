@@ -1,5 +1,6 @@
 <template>
     <div>
+        <div class="buffer"></div>
         <img :src="img" alt="image not found">
     </div>
 </template>
@@ -12,7 +13,12 @@ export default {
 </script>
 
 <style scoped>
+    .buffer {
+        padding: 5px;
+    }
     img {
-        width: 640px;
+     min-height: 25vh;
+     max-height: 60vh;
+     max-width: 100vh;
     }
 </style>
