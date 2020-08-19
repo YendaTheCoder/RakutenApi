@@ -3,9 +3,9 @@
     <img id="logo" src="./assets/logo.png" />
     <img id="clown" src="./assets/clownjoker.png" />
     <div class="nav-wrapper">
-      <router-link class="link" to="/like">Most Liked</router-link>
-      <router-link class="link" to="/home">Home</router-link>
-      <router-link class="link" to="/dislike">Most Disliked</router-link>
+      <router-link class="link" exact-active-class="exact-active-link" to="/like">Most Liked</router-link>
+      <router-link class="link" exact-active-class="exact-active-link" to="/home">Home</router-link>
+      <router-link class="link" exact-active-class="exact-active-link" to="/dislike">Most Disliked</router-link>
     </div>
     <router-view />
   </div>
@@ -14,6 +14,9 @@
 <script>
 export default {
   name: "App",
+  created: function() {
+    this.$router.push('/home')
+  }
 };
 </script>
 
@@ -52,6 +55,9 @@ body {
 .link:hover{
 cursor: hand; 
 cursor: pointer;
+}
+.exact-active-link { 
+    color: purple; /* Amaranth Red */
 }
 #clown {
     /* display: flex; */
