@@ -118,7 +118,7 @@ html, body {
 img {
   min-height: 25vh;
   max-height: 60vh;
-  max-width: 50vh;
+  max-width: 100vh;
 }
 #logo {
   min-height: 0vh;
