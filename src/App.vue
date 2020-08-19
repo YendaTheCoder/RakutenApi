@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img id="logo" src="./assets/logo.png"/>
+    <img id="logo" src="./assets/logo.png" />
     <navigation />
     <meme id="meme" :img="img" />
     <jokes id="joke" :joke="joke" />
@@ -34,7 +34,7 @@ export default {
     return {
       img: loadingImg,
       joke: "Waiting for new Joke...",
-      jokeId: ''
+      jokeId: "",
     };
   },
   beforeMount() {
@@ -44,18 +44,18 @@ export default {
   methods: {
     async getName() {
       const res = await axios({
-          "method":"GET",
-          "url":"https://mlemapi.p.rapidapi.com/randommlem",
-          "headers":{
-          "content-type":"application/octet-stream",
-          "x-rapidapi-host":"mlemapi.p.rapidapi.com",
+        method: "GET",
+        url: "https://mlemapi.p.rapidapi.com/randommlem",
+        headers: {
+          "content-type": "application/octet-stream",
+          "x-rapidapi-host": "mlemapi.p.rapidapi.com",
           "x-rapidapi-key": process.env.VUE_APP_KEY,
-          "useQueryString":true
-        }
-      })
+          useQueryString: true,
+        },
+      });
 
-      if(!res.data || !res.data.url) {
-        this.img = brokenImg
+      if (!res.data || !res.data.url) {
+        this.img = brokenImg;
       } else {
         this.img = res.data.url;
       }
@@ -75,11 +75,11 @@ export default {
         },
       });
 
-      if(!res.data || !res.data.joke) {
+      if (!res.data || !res.data.joke) {
         this.joke = brokenJoke;
       } else {
         this.joke = res.data.joke;
-        this.jokeId = res.data.id
+        this.jokeId = res.data.id;
       }
     },
     onClickLike: function () {
@@ -101,8 +101,9 @@ export default {
 </script>
 
 <style>
-html, body {
-  background: #DBE9EE; /*Alice Blue*/
+html,
+body {
+  background: #dbe9ee; /*Alice Blue*/
   margin: 0;
   padding: 0;
   width: 100%;
@@ -128,15 +129,15 @@ button {
   background-color: #3f0591; /* Indigo */
   border: none;
   padding: 10px 20px;
-  color: white; 
+  color: white;
   margin: 3px;
   box-shadow: -3px 3px #d82836, -2px 2px #d82836, -1px 1px #d82836;
   border: 1px solid #d82836;
-   outline:none;
+  outline: none;
 }
-button:hover{
-cursor: hand; 
-cursor: pointer;
+button:hover {
+  cursor: hand;
+  cursor: pointer;
 }
 button:active {
   -webkit-box-shadow: 0px 1px 0px #d82836;
@@ -144,7 +145,7 @@ button:active {
   box-shadow: 0px 1px 0px #d82836;
   position: relative;
   top: 6px;
-   outline:none;
+  outline: none;
 }
 /* #080708 Rich Black FOGRA 39 */
 /* #C0D6DF Columbia Blue */

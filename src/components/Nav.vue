@@ -17,7 +17,9 @@ export default {
         mostLiked () {
             console.log("Cheese")
         },
-        Home () {console.log('Wine')}
+        Home () {
+            console.log('Wine')
+            }
 }
 }
 
