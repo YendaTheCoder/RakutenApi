@@ -1,5 +1,6 @@
 <template>
-    <div>- Meme Block - <br/>
+    <div>
+        <div class="buffer"></div>
         <img :src="img" alt="image not found">
     </div>
 </template>
@@ -14,5 +15,9 @@ export default {
 <style scoped>
     img {
         width: 640px;
+        max-width: 100vh;
+    }
+    .buffer {
+        padding: 5px;
     }
 </style>

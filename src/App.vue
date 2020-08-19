@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <img id="logo" src="./assets/logo.png"/>
+    <navigation />
     <meme id="meme" :img="img" />
     <jokes id="joke" :joke="joke" />
 
@@ -12,6 +13,7 @@
 <script>
 import Meme from "./components/Meme";
 import Jokes from "./components/Jokes";
+import Navigation from "./components/Nav";
 import axios from "axios";
 require("dotenv").config();
 
@@ -24,13 +26,15 @@ const brokenJoke = "My humor is not working today.";
 export default {
   name: "App",
   components: {
+    navigation: Navigation,
     meme: Meme,
     jokes: Jokes,
   },
   data: function () {
     return {
       img: loadingImg,
-      joke: "Waiting for new Joke..."
+      joke: "Waiting for new Joke...",
+      jokeId: ''
     };
   },
   beforeMount() {
@@ -75,6 +79,7 @@ export default {
         this.joke = brokenJoke;
       } else {
         this.joke = res.data.joke;
+        this.jokeId = res.data.id
       }
     },
     onClickLike: function () {
@@ -97,10 +102,10 @@ export default {
 
 <style>
 html, body {
-  background: #dfd5fe;
+  background: #DBE9EE; /*Alice Blue*/
   margin: 0;
   padding: 0;
-  widows: 100vh;
+  width: 100%;
   height: 100vh;
 }
 #app {
@@ -113,16 +118,33 @@ html, body {
 img {
   min-height: 25vh;
   max-height: 60vh;
+  max-width: 50vh;
 }
 #logo {
-  min-height: 5vh;
-  max-height: 10vh;
+  min-height: 0vh;
+  max-height: 15vh;
 }
 button {
-  background-color: #3c46fb;
+  background-color: #3f0591; /* Indigo */
   border: none;
   padding: 10px 20px;
   color: white; 
   margin: 3px;
+  box-shadow: -3px 3px #d82836, -2px 2px #d82836, -1px 1px #d82836;
+  border: 1px solid #d82836;
 }
+button:hover{
+cursor: hand; 
+cursor: pointer;
+}
+button:active {
+  -webkit-box-shadow: 0px 1px 0px #d82836;
+  -moz-box-shadow: 0px 1px 0px #d82836;
+  box-shadow: 0px 1px 0px #d82836;
+  position: relative;
+  top: 6px;
+}
+/* #080708 Rich Black FOGRA 39 */
+/* #C0D6DF Columbia Blue */
+/* #d82836;  Amaranth Red */
 </style>

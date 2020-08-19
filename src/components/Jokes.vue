@@ -1,5 +1,5 @@
 <template>
-    <div>- Joke Block - <br/>
+    <div>
         <div>{{joke}}</div> <br/>
     </div>
 </template>

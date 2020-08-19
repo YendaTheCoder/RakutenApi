@@ -1,7 +1,7 @@
 # Joker APP
 ![logo](https://user-images.githubusercontent.com/59043522/90584602-e61e8c00-e1a0-11ea-9abc-325a924433bf.png)
 
-This was created during my time as a student at Code Chrysalis.
+This was created during our time as students at Code Chrysalis.
 
 ## Table of Contents
 
@@ -9,7 +9,7 @@ This was created during my time as a student at Code Chrysalis.
 1.  [Usage](#usage)
 1.  [Environment](#environment)
 1.  [Contributing](#contributing)
-1.  [Author](#author)
+1.  [Authors](#authors)
 
 ## Description
 
@@ -18,6 +18,11 @@ This was created during my time as a student at Code Chrysalis.
 
 ## Usage
 
+### Generate Jokes
+
+### Most Liked
+
+### Most Disliked
 
 ## Environment
 
@@ -54,11 +59,11 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 - [Yarn](https://yarnpkg.com/) - Package Management
 - [Knex](https://knexjs.org/) - Query building
 - [Postgres](https://www.postgresql.org/) - Database Management
-- [express](https://expressjs.com/) - 
+- [express](https://expressjs.com/) - Routing
 
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-## Author
+## Authors
 [@Bakisunsan](https://github.com/bakisunsan) [@Dylanc55](https://github.com/Dylanc55) [@Ottotsuma](https://github.com/ottotsuma) [@Ryohei03](https://github.com/Ryohei03) [@yuriamm](https://github.com/yuriamm)
