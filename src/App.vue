@@ -92,22 +92,24 @@ body {
 }
 .nav-wrapper {
   background-color: #3f0591; /* Indigo */
-  border: none;
-  padding: 8px 18px;
-  color: white;
-  margin: 3px;
-  box-shadow: -3px 3px #d82836, -2px 2px #d82836, -1px 1px #d82836;
-  border: 1px solid #d82836;
-  outline: none;
   font-family: URW Chancery L, cursive;
+  /* display: flex; */
 }
 .link { 
     color:#d82836; /* Amaranth Red */
+    font-size: 4vh;
+     font-weight: bold;
+    -webkit-text-stroke: 0.5px white;
+    font-family: URW Chancery L, cursive;
+    margin: 2vh;
+    /* text-shadow: white 1px 0 10px; */
 }
 .link:hover{
 cursor: hand; 
 cursor: pointer;
 }
+
+
 .exact-active-link { 
     color: purple; /* Amaranth Red */
 }
@@ -122,7 +124,7 @@ cursor: pointer;
   position: absolute;
   /* min-height: 0vh;
   max-height: 15vh; */
-  margin-top: 1vh; 
+  margin-top: 6vh; 
 }
 @media screen and (min-width: 0px) and (max-width: 720px) {
   #clown {
@@ -137,12 +139,15 @@ cursor: pointer;
 }
 .speech-bubble {
   position: relative;
-  background: #00aabb;
+  background: #3f0591;
+  color: #d82836;
+  -webkit-text-stroke: 0.1px white;
+  font-family: URW Chancery L, cursive;
   border-radius: 0.4em;
   /* display: flex; */
-  min-width: 10vh;
-  margin-left: 22vh;
-  max-width: 60vh;
+  min-width: 0vh;
+  margin-left: 24vh;
+  max-width: 50vh;
 }
 .speech-bubble:after {
   content: "";
@@ -152,10 +157,10 @@ cursor: pointer;
   width: 0;
   height: 0;
   border: 20px solid transparent;
-  border-top-color: #00aabb;
+  border-top-color: #3f0591;
   border-bottom: 0;
   border-left: 0;
-  margin-left: -20px;
+  margin-left: -30px;
   margin-bottom: -20px;
 }
 /* #080708 Rich Black FOGRA 39 */
