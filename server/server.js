@@ -12,9 +12,9 @@ app.use(express.static(path.resolve(__dirname, "..", "dist")));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// GET retrieve jokes
 app.get('/api', async (req, res) => {
     try {
-
         const jokes = await db.select().table("jokes");
         res.json(jokes);
 
