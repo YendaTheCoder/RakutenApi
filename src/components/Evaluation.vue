@@ -104,12 +104,13 @@ img {
 button {
   background-color: #3f0591; /* Indigo */
   border: none;
-  padding: 10px 20px;
+  padding: 9px 18px;
   color: white; 
   margin: 3px;
   box-shadow: -3px 3px #d82836, -2px 2px #d82836, -1px 1px #d82836;
   border: 1px solid #d82836;
   outline:none;
+  font-family: URW Chancery L, cursive;
 }
 button:hover{
 cursor: hand; 
