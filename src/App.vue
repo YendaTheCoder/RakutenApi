@@ -11,6 +11,11 @@
       <router-link class="link" exact-active-class="exact-active-link" to="/dislike">Most Disliked</router-link>
     </div>
     <router-view />
+    <footer>
+      <div>
+        <img id="footer-logo" src="./assets/logo.png" /> © Nekonoshita Corp.
+      </div>
+    </footer>
   </div>
 </template>
 
@@ -167,6 +172,14 @@ cursor: pointer;
   border-left: 0;
   margin-left: -30px;
   margin-bottom: -20px;
+}
+footer {
+  margin-top: 15px;
+  font-family: URW Chancery L, cursive;
+}
+#footer-logo {
+  min-height: 0vh;
+  max-height: 4vh;
 }
 /* #080708 Rich Black FOGRA 39 */
 /* #C0D6DF Columbia Blue */
