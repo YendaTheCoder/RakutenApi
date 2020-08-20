@@ -120,6 +120,10 @@ cursor: pointer;
   /* min-height: 0vh;
   max-height: 15vh; */
 }
+#clown:hover{
+cursor: hand; 
+cursor: pointer;
+}
 .clown {
   display: flex;
   position: absolute;
