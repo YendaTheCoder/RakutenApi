@@ -1,10 +1,9 @@
 <template>
   <div class="ranking-div">
-    shitshitshit
     <div v-for="(item, index) in jokes" :key="index">
-      <div>
-        <div class="ranks-div">ranking: {{ index + 1 }}</div>
-        <div class>{{ item.joke }}</div>
+      <div class="wrapper-ranks">
+        <div class="ranks-div">Ranking: {{ index + 1 }}</div>
+        <div :id="index" class="joke-on-rank">{{ item.joke }}</div>
         <div v-if="likeOrDislike === 'like'">
           <v-fa :icon="['fas', 'heart']" size="xs" />
           {{ item.like }}
@@ -75,6 +74,18 @@ display: inline-block;
 margin-top: 1vh;
 }
 .ranks-div {
-  
+ font: bold;
+  color:#d82836; /* Amaranth Red */
+    font-size: 4vh;
+     font-weight: bold;
+    -webkit-text-stroke: 0.5px white;
+ font-family: URW Chancery L, cursive;
+}
+.joke-on-rank {
+  /* padding: 1vh; */
+  font-family: URW Chancery L, cursive;
+}
+.wrapper-ranks{
+  padding: 1vh;
 }
 </style>
