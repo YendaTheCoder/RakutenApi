@@ -1,6 +1,6 @@
 <template>
   <div id="app" ref="app">
-    <!-- <img id="logo" src="./assets/logo.png" /> -->
+    <img id="logo" src="./assets/logo.png" />
     <div class="clown">
     <img id="clown" @click="clownFunction" src="./assets/clownjoker.png"  ref="clown" v-bind:class="{ left: isLeft, right: isRight }" />
     <div class="speech-bubble">{{clown}}</div>
