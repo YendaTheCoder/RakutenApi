@@ -1,4 +1,4 @@
-
+// seed file of jokes
 exports.seed = function(knex) {
   // Deletes ALL existing entries
   return knex('jokes').del()
