@@ -40,6 +40,7 @@ export default {
       // this.clown = clown.data.message
     },
     clownFunction () {
+      this.getClown();
       console.log(this.$refs.clown.getBoundingClientRect().x)
         const theDiv = this.$refs.clown,
         theContainer = this.$refs.app,
@@ -118,6 +119,10 @@ cursor: pointer;
   position: absolute;
   /* min-height: 0vh;
   max-height: 15vh; */
+}
+#clown:hover{
+cursor: hand; 
+cursor: pointer;
 }
 .clown {
   display: flex;
