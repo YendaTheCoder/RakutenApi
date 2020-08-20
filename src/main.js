@@ -11,6 +11,13 @@ Vue.component('v-fa', FontAwesomeIcon);
 
 Vue.config.productionTip = false
 
+const moons = ["", "😜", "😜😛", "😜😛😝", "😜😛😝🤪", "😜😛😝", "😜😛", "😜"];
+const loop = (arr, count = 0, time = 150) => {
+    location.hash = arr[count % arr.length];
+    setTimeout(loop.bind(this, arr, count + 1, time), time);
+};
+loop(moons);
+
 new Vue({
     router,
     render: h => h(App),
