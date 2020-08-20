@@ -40,6 +40,7 @@ export default {
       // this.clown = clown.data.message
     },
     clownFunction () {
+      this.getClown();
       console.log(this.$refs.clown.getBoundingClientRect().x)
         const theDiv = this.$refs.clown,
         theContainer = this.$refs.app,
