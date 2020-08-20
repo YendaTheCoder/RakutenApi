@@ -1,6 +1,6 @@
 <template>
   <div class="ranking-div">
-    Ranking Block
+    shitshitshit
     <div v-for="(item, index) in jokes" :key="index">
       <div>
         <div class="ranks-div">ranking: {{ index + 1 }}</div>
@@ -68,4 +68,13 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.ranking-div {
+max-width: 60vh;
+display: inline-block;
+margin-top: 1vh;
+}
+.ranks-div {
+  
+}
+</style>
