@@ -2,8 +2,8 @@
   <div id="app" ref="app">
     <img id="logo" src="./assets/logo.png" />
     <navigation />
-    <div class="clown" ref="clown">
-    <img id="clown" @click="clownFunction" src="./assets/clownjoker.png" />
+    <div class="clown">
+    <img id="clown" @click="clownFunction" src="./assets/clownjoker.png"  ref="clown" v-bind:class="{ left: isLeft, right: isRight }" />
     <div class="speech-bubble">{{clown}}</div>
     </div>
     <evaluation v-if="IsHere" />
@@ -40,6 +40,8 @@ export default {
       jokeId: "",
       IsHere: true,
       clown: '',
+      isRight: false,
+      isLeft: false
     };
   },
   beforeMount() {
@@ -128,7 +130,7 @@ export default {
       }
     },
     clownFunction () {
-      console.log(this.$refs.clown)
+      console.log(this.$refs.clown.getBoundingClientRect().x)
         const theDiv = this.$refs.clown,
         theContainer = this.$refs.app,
         maxLeft = theContainer.offsetWidth - theDiv.offsetWidth,
@@ -136,10 +138,14 @@ export default {
         leftPos = Math.floor(Math.random() * maxLeft),
         topPos = Math.floor(Math.random() * maxTop);
 
-    if (theDiv.position().left < leftPos) {
-        theDiv.removeClass("left").addClass("right");
+    if (theDiv.getBoundingClientRect().x.left < leftPos) {
+        this.$set(this.$data, 'isLeft', false);
+        this.$set(this.$data, 'isRight', true);
+        // theDiv.removeClass("left").addClass("right");
     } else {
-        theDiv.removeClass("right").addClass("left");
+        this.$set(this.$data, 'isLeft', true);
+        this.$set(this.$data, 'isRight', false);
+        // theDiv.removeClass("right").addClass("left");
     }
 
     theDiv.animate({
