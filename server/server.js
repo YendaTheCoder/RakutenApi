@@ -41,7 +41,31 @@ app.get('/api/dislike', async (req, res) => {
         res.sendStatus(500);
     }
 });
-  
+
+app.get('/api/userPosts', async (req, res) => {
+    const joke = req.body.joke;
+
+    try {
+        let table = await db.select().table("jokesForUserPosts");
+        res.json(table);
+    } catch (err) {
+        console.error("Error updating table!", err);
+        res.sendStatus(500);    
+    }
+});
+
+app.post('/api/userPosts', async (req, res) => {
+    const joke = req.body.joke;
+
+    try {
+        let table = await db.table("jokesForUserPosts").insert({"joke": joke, "like": 0, "dislike": 0});
+        res.json(table);
+    } catch (err) {
+        console.error("Error updating table!", err);
+        res.sendStatus(500);    
+    }
+});
+
 app.patch('/api', async (req, res) => {
     const likeOrDislike = req.body.likeOrDislike;
     const joke_ID = req.body.joke_ID;
