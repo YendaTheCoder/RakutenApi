@@ -15,18 +15,12 @@ This was created during our time as students at Code Chrysalis.
 This app allows users to like or dislike jokes made specifically for them!
 Users can also see the most liked and disliked jokes of all time!
 
-![ViewOfApp](./src/assets/joker.png?raw=true "Title") 
+<img width="957" alt="shaun" src="https://user-images.githubusercontent.com/59043522/90850254-26b40c00-e33f-11ea-8177-d764f4bfb75e.png">
+
 
 ## Link
 [JOKER](https://cc13-rakutenapi-staging.herokuapp.com/)
 
-## Usage
-
-### Generate Jokes
-
-### Most Liked
-
-### Most Disliked
 
 ## Environment
 
