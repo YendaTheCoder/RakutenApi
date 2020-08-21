@@ -1,7 +1,8 @@
 <template>
   <div>
-    <meme id="meme" :img="img" />
     <jokes id="joke" :joke="joke" />
+
+    <meme id="meme" :img="img" />
 
     <button @click="onClickLike">LIKE</button>
     <button @click="onClickDislike">DISLIKE</button>
@@ -99,7 +100,7 @@ export default {
 <style>
 img {
   min-height: 25vh;
-  max-height: 60vh;
+  max-height: 50vh;
 }
 button {
   background-color: #3f0591; /* Indigo */

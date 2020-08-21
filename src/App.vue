@@ -134,7 +134,7 @@ cursor: pointer;
   position: absolute;
   /* min-height: 0vh;
   max-height: 15vh; */
-  margin-top: 6vh; 
+  margin-top: 24vh; 
 }
 @media screen and (min-width: 0px) and (max-width: 720px) {
   #clown {
@@ -156,8 +156,8 @@ cursor: pointer;
   border-radius: 0.4em;
   /* display: flex; */
   min-width: 0vh;
-  margin-left: 24vh;
-  max-width: 50vh;
+  margin-left: 20vh;
+  max-width: 40vh;
 }
 .speech-bubble:after {
   content: "";
